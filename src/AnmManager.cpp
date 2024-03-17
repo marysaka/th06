@@ -164,6 +164,39 @@ ZunResult AnmManager::CreateEmptyTexture(i32 textureIdx, u32 width, u32 height, 
     return ZUN_SUCCESS;
 }
 
+ZunResult AnmManager::LoadTexture(i32 textureIdx, char *textureName, i32 textureFormat, D3DCOLOR colorKey)
+{
+    ReleaseTexture(textureIdx);
+    this->imageDataArray[textureIdx] = FileSystem::OpenPath(textureName, 0);
+
+    if (this->imageDataArray[textureIdx] == NULL)
+    {
+        return ZUN_ERROR;
+    }
+
+    if (((g_Supervisor.cfg.opts >> GCOS_FORCE_16BIT_COLOR_MODE) & 1) != 0)
+    {
+        if (g_TextureFormatD3D8Mapping[textureFormat] == D3DFMT_A8R8G8B8 ||
+            g_TextureFormatD3D8Mapping[textureFormat] == D3DFMT_UNKNOWN)
+        {
+            textureFormat = 5;
+        }
+        else if (g_TextureFormatD3D8Mapping[textureFormat] == D3DFMT_R8G8B8)
+        {
+            textureFormat = 3;
+        }
+    }
+
+    if (D3DXCreateTextureFromFileInMemoryEx(g_Supervisor.d3dDevice, this->imageDataArray[textureIdx], g_LastFileSize, 0,
+                                            0, 0, 0, g_TextureFormatD3D8Mapping[textureFormat], D3DPOOL_MANAGED, 3,
+                                            0xFFFFFFFF, colorKey, NULL, NULL, &this->textures[textureIdx]) != D3D_OK)
+    {
+        return ZUN_ERROR;
+    }
+
+    return ZUN_SUCCESS;
+}
+
 void AnmManager::LoadSprite(u32 spriteIdx, AnmLoadedSprite *sprite)
 {
     memcpy(this->sprites + spriteIdx, sprite, sizeof(AnmLoadedSprite));

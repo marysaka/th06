@@ -1,7 +1,6 @@
 AnmManager::LoadTexture
 AnmManager::ReleaseAnm
 AnmManager::LoadTextureMipmap
-AnmManager::LoadSprite
 AsciiManager::DrawStrings
 StageMenu::OnUpdateGameMenu
 StageMenu::OnUpdateRetryMenu

@@ -47,8 +47,8 @@ ZunResult Supervisor::LoadConfig(char *path)
     data = FileSystem::OpenPath(path, 1);
     if (data == NULL)
     {
-        g_Supervisor.cfg.lifeCount = 2;
-        g_Supervisor.cfg.bombCount = 3;
+        g_Supervisor.cfg.lifeCount = 127;
+        g_Supervisor.cfg.bombCount = 127;
         g_Supervisor.cfg.colorMode16bit = 0xff;
         g_Supervisor.cfg.version = 0x102;
         g_Supervisor.cfg.padXAxis = 600;
@@ -66,7 +66,7 @@ ZunResult Supervisor::LoadConfig(char *path)
         }
         g_Supervisor.cfg.playSounds = 1;
         g_Supervisor.cfg.defaultDifficulty = 1;
-        g_Supervisor.cfg.windowed = false;
+        g_Supervisor.cfg.windowed = true;
         g_Supervisor.cfg.frameskipConfig = 0;
         g_Supervisor.cfg.controllerMapping = g_ControllerMapping;
         GameErrorContextLog(&g_GameErrorContext, TH_ERR_CONFIG_NOT_FOUND);
@@ -80,8 +80,8 @@ ZunResult Supervisor::LoadConfig(char *path)
             (1 < g_Supervisor.cfg.windowed) || (2 < g_Supervisor.cfg.frameskipConfig) ||
             (g_Supervisor.cfg.version != 0x102) || (g_LastFileSize != 0x38))
         {
-            g_Supervisor.cfg.lifeCount = 2;
-            g_Supervisor.cfg.bombCount = 3;
+            g_Supervisor.cfg.lifeCount = 127;
+            g_Supervisor.cfg.bombCount = 127;
             g_Supervisor.cfg.colorMode16bit = 0xff;
             g_Supervisor.cfg.version = 0x102;
             g_Supervisor.cfg.padXAxis = 600;
@@ -97,9 +97,9 @@ ZunResult Supervisor::LoadConfig(char *path)
                 g_Supervisor.cfg.musicMode = WAV;
                 fclose(wavFile);
             }
-            g_Supervisor.cfg.playSounds = 1;
+            g_Supervisor.cfg.playSounds = 0;
             g_Supervisor.cfg.defaultDifficulty = 1;
-            g_Supervisor.cfg.windowed = false;
+            g_Supervisor.cfg.windowed = true;
             g_Supervisor.cfg.frameskipConfig = 0;
             g_Supervisor.cfg.controllerMapping = g_ControllerMapping;
             g_Supervisor.cfg.opts = g_Supervisor.cfg.opts | (1 << GCOS_USE_D3D_HW_TEXTURE_BLENDING);

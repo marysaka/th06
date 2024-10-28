@@ -71,7 +71,7 @@ struct MidiOutput : MidiTimer
     ZunResult LoadFile(char *midiPath);
     ZunResult Play();
 
-    void SetFadeOut(u32 ms);
+    u32 SetFadeOut(u32 ms);
     static u16 Ntohs(u16 val);
     static u32 SkipVariableLength(u8 **curTrackDataCursor);
 
@@ -91,15 +91,15 @@ struct MidiOutput : MidiTimer
     MidiDevice midiOutDev;
     u8 unk144[384];
     u8 unk2c4;
-    u32 unk2c8;
-    u32 unk2cc;
+    f32 fadeOutVolumeMultiplier;
+    u32 fadeOutLastSetVolume;
     u32 unk2d0;
     u32 unk2d4;
     u32 unk2d8;
     u32 unk2dc;
-    u32 unk2e0;
-    u32 unk2e4;
-    u32 unk2e8;
+    u32 fadeOutFlag;
+    u32 fadeOutInterval;
+    u32 fadeOutElapsedMS;
     u32 unk2ec;
     u32 unk2f0;
     u32 unk2f4;

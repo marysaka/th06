@@ -74,6 +74,7 @@
 #define TH_JP_ERR_GUI_MSG_FILE_CORRUPTED "error : メッセージファイル %s が読み込めませんでした\n"
 #define TH_JP_ERR_STAGE_DATA_CORRUPTED "ステージデータが見つかりません。データが壊れています\n"
 #define TH_JP_ERR_MIDI_FAILED_TO_READ_FILE "error : MIDI File が読み込めない %s \n"
+#define TH_JP_ERR_MIDI_FAILED_TO_PLAY "error : まだMIDIが読み込まれていないのに再生しようとしている\n"
 
 #define TH_JP_REIMU_A_BOMB_NAME "霊符「夢想封印」"
 #define TH_JP_REIMU_B_BOMB_NAME "夢符「封魔陣」"
@@ -157,6 +158,7 @@
 #define TH_EN_ERR_GUI_MSG_FILE_CORRUPTED "error : message file %s could not be read.\n"
 #define TH_EN_ERR_STAGE_DATA_CORRUPTED "Stage data not found. Data is corrupted.\n"
 #define TH_EN_ERR_MIDI_FAILED_TO_READ_FILE "error : MIDI File %s could not be read.\n"
+#define TH_EN_ERR_MIDI_FAILED_TO_PLAY "error: You're trying to play something without having MIDI loaded yet.\n"
 
 #define TH_EN_REIMU_A_BOMB_NAME "Spirit Sign \"Dream Seal\""
 #define TH_EN_REIMU_B_BOMB_NAME "Dream Sign \"Evil-Sealing Circle\""
@@ -241,6 +243,7 @@
 #define TH_ERR_GUI_MSG_FILE_CORRUPTED TH_MAKE_LANG_STR(TH_LANG, _ERR_GUI_MSG_FILE_CORRUPTED)
 #define TH_ERR_STAGE_DATA_CORRUPTED TH_MAKE_LANG_STR(TH_LANG, _ERR_STAGE_DATA_CORRUPTED)
 #define TH_ERR_MIDI_FAILED_TO_READ_FILE TH_MAKE_LANG_STR(TH_LANG, _ERR_MIDI_FAILED_TO_READ_FILE)
+#define TH_ERR_MIDI_FAILED_TO_PLAY TH_MAKE_LANG_STR(TH_LANG, _ERR_MIDI_FAILED_TO_PLAY)
 #define TH_REIMU_A_BOMB_NAME TH_MAKE_LANG_STR(TH_LANG, _REIMU_A_BOMB_NAME)
 #define TH_REIMU_B_BOMB_NAME TH_MAKE_LANG_STR(TH_LANG, _REIMU_B_BOMB_NAME)
 #define TH_MARISA_A_BOMB_NAME TH_MAKE_LANG_STR(TH_LANG, _MARISA_A_BOMB_NAME)
